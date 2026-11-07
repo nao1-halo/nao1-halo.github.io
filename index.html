@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>nao｜集客導線・デザイン</title>
-<meta name="description" content="サロン・個人教室向けに、LINE公式アカウントとUTAGEで「自動でリピートが生まれる仕組み」をデータにもとづいて設計し、デザインまで一人で対応します。">
+<meta name="description" content="サロン・個人教室向けに、LINE公式アカウント・Lステップ・エルメとUTAGEで「自動でリピートが生まれる仕組み」をデータにもとづいて設計し、デザインまで一人で対応します。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -98,6 +98,12 @@
   .phone.real{height:560px;overflow-y:auto;-webkit-overflow-scrolling:touch}
   .phone.real img{display:block;width:100%;height:auto}
   .phone-cap{text-align:center;font-size:12px;color:var(--muted);margin-top:10px}
+  .rm-main{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:#fff}
+  .rm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:16px}
+  .rm-grid figure{margin:0}
+  .rm-grid img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line)}
+  .rm-cap{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.6}
+  .rm-cap b{color:var(--ink);font-size:13px}
   .banners{display:flex;flex-direction:column;gap:14px}
   .banner{border-radius:16px;padding:20px;color:#fff;background:var(--grad)}
   .banner b{font-family:"Zen Maru Gothic";font-size:20px;display:block;line-height:1.4}
@@ -155,7 +161,7 @@
   <div class="wrap">
     <span class="tag">サロン・個人教室・オンライン講師の方へ</span>
     <h1>紙のポイントカードと手作業の予約を、<br><span class="nb"><em>LINEで自動でリピートが生まれる仕組み</em>に。</span></h1>
-    <p>LINE公式アカウントとUTAGEで、<br>集客から予約・リピート・販売までの「導線」を設計・構築します。<br>売上データの分析にもとづく設計から、LP・バナーのデザインまで<br>一人で対応するので、窓口がひとつで済みます。</p>
+    <p>LINE公式アカウント・Lステップ・エルメ、UTAGEを使って、<br>集客から予約・リピート・販売までの「導線」を設計・構築します。<br>売上データの分析にもとづく設計から、LP・バナーのデザインまで<br>一人で対応するので、窓口がひとつで済みます。</p>
     <a class="btn" href="#contact">無料で相談する</a>
     <a class="btn ghost" href="#samples">制作サンプルを見る</a>
   </div>
@@ -197,9 +203,9 @@
     <p class="note">※ 以下は架空の店舗・講座を想定して作成した制作サンプルです。実在の店舗・お客様の事例ではありません。</p>
 
     <div class="sample">
-      <div class="sample-head"><span class="chip">LINE公式アカウント</span><span class="chip p">リピート導線</span></div>
+      <div class="sample-head"><span class="chip">LINE公式アカウント</span><span class="chip">Lステップ</span><span class="chip">エルメ</span><span class="chip p">リピート導線</span></div>
       <h3>まつ毛サロン：LINEでリピートと店販が回る仕組み</h3>
-      <p>来店時にLINEへ誘導し、ポイントカード・次回予約・ホームケア商品の案内までを一本の流れにまとめた設計です。</p>
+      <p>LINE公式アカウントにLステップやエルメを組み合わせて、来店時にLINEへ誘導し、ポイントカード・次回予約・ホームケア商品の案内までを一本の流れにまとめた設計です。</p>
       <div class="flow">
         <div class="step"><b>来店・施術</b><small>受付で<wbr>QRを案内</small></div>
         <div class="step"><b>LINE<br>友だち追加</b><small>特典つきで<br>登録を後押し</small></div>
@@ -224,6 +230,18 @@
         <div class="step"><b>お申し込み<br>・決済</b><small>オンラインで<br>完結</small></div>
       </div>
       <div class="kpi"><strong>見る数字：</strong><span>登録率</span><span>参加率</span><span>相談申込率</span><span>成約率</span></div>
+    </div>
+
+    <div class="sample">
+      <div class="sample-head"><span class="chip">LINEリッチメニュー</span><span class="chip">Lステップ</span><span class="chip">エルメ</span><span class="chip p">デザイン</span></div>
+      <h3>リッチメニュー：押したくなる入口をデザイン</h3>
+      <p>トーク画面の下に常に表示されるメニューを、導線の入口として設計・デザインします。Lステップやエルメのタブ切り替え・会員限定メニューにも対応します。</p>
+      <img class="rm-main" src="richmenu-funnel.jpg" alt="個別相談獲得のためのリッチメニューとUTAGE導線" loading="lazy">
+      <p class="rm-cap"><b>個別相談獲得ファネル</b><br>リッチメニュー → 無料動画（UTAGE）→ 個別相談の予約 → 予約完了まで、一本の流れで設計</p>
+      <div class="rm-grid">
+        <figure><img src="richmenu-salon.jpg" alt="サロン向けリッチメニュー" loading="lazy"><figcaption class="rm-cap"><b>サロン向け</b><br>症例・メニュー料金・予約への3つの入口</figcaption></figure>
+        <figure><img src="richmenu-tab.jpg" alt="タブ切り替え式リッチメニュー" loading="lazy"><figcaption class="rm-cap"><b>タブ切り替え・会員限定</b><br>通常メニューと会員限定メニューを切り替え</figcaption></figure>
+      </div>
     </div>
 
     <div class="sample">
@@ -261,7 +279,7 @@
       <div class="card">
         <div class="num">1人</div>
         <h3>設計からデザインまで一括</h3>
-        <p>導線設計・LINE・UTAGEの構築に加え、LPやバナーのデザインも対応。複数の業者に頼む手間がかかりません。</p>
+        <p>導線設計・LINE（Lステップ・エルメ）・UTAGEの構築に加え、LPやバナーのデザインも対応。複数の業者に頼む手間がかかりません。</p>
       </div>
       <div class="card">
         <div class="num">♡</div>
@@ -279,6 +297,7 @@
     <p class="lead">必要なところだけのご依頼も歓迎です。料金はココナラの出品ページでご確認いただけます。</p>
     <div class="svc">
       <div><b>LINE公式アカウント構築</b><small>ポイントカード・予約・自動配信</small></div>
+      <div><b>Lステップ・エルメ構築</b><small>タグ付け・セグメント配信・リッチメニュー設計とデザイン</small></div>
       <div><b>UTAGE初期設定サポート</b><small>はじめての方も安心</small></div>
       <div><b>ステップ配信シナリオ設計</b><small>読まれる順番と内容を設計</small></div>
       <div><b>ファネル（導線）設計・コンサル</b><small>数字を見ながら改善提案</small></div>

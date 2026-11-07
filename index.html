@@ -44,7 +44,8 @@
   /* hero */
   .hero{padding:80px 0 64px;background:radial-gradient(circle at 85% 10%,var(--purple-soft),transparent 45%),radial-gradient(circle at 10% 90%,var(--pink-soft),transparent 45%)}
   .hero .tag{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:13px;color:var(--muted);margin-bottom:20px}
-  .hero h1{font-size:clamp(28px,6vw,46px);margin-bottom:20px}
+  .hero h1{font-size:clamp(26px,5.5vw,40px);margin-bottom:20px}
+  @media(min-width:760px){.hero h1 .nb{white-space:nowrap}}
   .hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
   .hero p{color:var(--muted);max-width:640px;margin-bottom:32px}
   .btn{display:inline-block;background:var(--grad);color:#fff;text-decoration:none;font-weight:700;padding:14px 28px;border-radius:999px;box-shadow:0 8px 24px rgba(122,91,208,.25)}
@@ -76,8 +77,9 @@
   .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;counter-reset:step}
   .step{background:#fff;border-radius:14px;padding:16px 12px;text-align:center;position:relative;border:1px solid var(--line)}
   .step::before{counter-increment:step;content:counter(step);display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--grad);color:#fff;font-size:13px;font-weight:700;margin:0 auto 8px}
-  .step b{display:block;font-size:15px}
-  .step small{color:var(--muted);font-size:12px;line-height:1.5;display:block;margin-top:4px}
+  .step b{display:block;font-size:14px;line-height:1.5}
+  .step small{color:var(--muted);font-size:12px;line-height:1.5;display:block;margin-top:6px}
+  h1,h2,h3,.lead,.hero p,.step,.card p,.svc small{word-break:auto-phrase}
   .kpi{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px}
   .kpi strong{margin-right:4px}
   .kpi span{background:#fff;border:1px solid var(--line);border-radius:8px;padding:3px 10px}
@@ -93,6 +95,9 @@
   .phone .cta{display:block;margin:14px auto 0;background:#06c755;color:#fff;border-radius:999px;padding:10px;font-size:13px;font-weight:700;width:85%}
   .phone .body{padding:16px 18px;font-size:12px}
   .phone .body div{border-bottom:1px solid var(--line);padding:8px 0}
+  .phone.real{height:560px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .phone.real img{display:block;width:100%;height:auto}
+  .phone-cap{text-align:center;font-size:12px;color:var(--muted);margin-top:10px}
   .banners{display:flex;flex-direction:column;gap:14px}
   .banner{border-radius:16px;padding:20px;color:#fff;background:var(--grad)}
   .banner b{font-family:"Zen Maru Gothic";font-size:20px;display:block;line-height:1.4}
@@ -136,7 +141,7 @@
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#">nao<span>｜集客導線×デザイン</span></a>
+    <a class="logo" href="#">nao<span>｜集客導線・デザイン</span></a>
     <nav>
       <a href="#samples">制作サンプル</a>
       <a href="#strength">強み</a>
@@ -149,8 +154,8 @@
 <section class="hero">
   <div class="wrap">
     <span class="tag">サロン・個人教室・オンライン講師の方へ</span>
-    <h1>紙のポイントカードと手作業の予約を、<br><em>LINEで自動でリピートが生まれる仕組み</em>に。</h1>
-    <p>LINE公式アカウントとUTAGEで、集客から予約・リピート・販売までの「導線」を設計・構築します。売上データの分析にもとづく設計から、LP・バナーのデザインまで一人で対応するので、窓口がひとつで済みます。</p>
+    <h1>紙のポイントカードと手作業の予約を、<br><span class="nb"><em>LINEで自動でリピートが生まれる仕組み</em>に。</span></h1>
+    <p>LINE公式アカウントとUTAGEで、<br>集客から予約・リピート・販売までの「導線」を設計・構築します。<br>売上データの分析にもとづく設計から、LP・バナーのデザインまで<br>一人で対応するので、窓口がひとつで済みます。</p>
     <a class="btn" href="#contact">無料で相談する</a>
     <a class="btn ghost" href="#samples">制作サンプルを見る</a>
   </div>
@@ -196,12 +201,12 @@
       <h3>まつ毛サロン：LINEでリピートと店販が回る仕組み</h3>
       <p>来店時にLINEへ誘導し、ポイントカード・次回予約・ホームケア商品の案内までを一本の流れにまとめた設計です。</p>
       <div class="flow">
-        <div class="step"><b>来店・施術</b><small>受付でQRを案内</small></div>
-        <div class="step"><b>LINE友だち<br>追加</b><small>特典つきで登録を後押し</small></div>
-        <div class="step"><b>デジタルポイント</b><small>来店ごとに自動付与</small></div>
-        <div class="step"><b>自動リマインド</b><small>来店から3〜4週で次回案内</small></div>
-        <div class="step"><b>LINEで次回予約</b><small>24時間受付</small></div>
-        <div class="step"><b>美容液のご案内</b><small>持ちが気になる時期に紹介</small></div>
+        <div class="step"><b>来店・施術</b><small>受付で<wbr>QRを案内</small></div>
+        <div class="step"><b>LINE<br>友だち追加</b><small>特典つきで<br>登録を後押し</small></div>
+        <div class="step"><b>デジタル<br>ポイント</b><small>来店ごとに<br>自動付与</small></div>
+        <div class="step"><b>自動<br>リマインド</b><small>来店から<br>3〜4週で次回案内</small></div>
+        <div class="step"><b>LINEで<br>次回予約</b><small>24時間受付</small></div>
+        <div class="step"><b>美容液の<br>ご案内</b><small>持ちが気になる<br>時期に紹介</small></div>
       </div>
       <div class="kpi"><strong>見る数字：</strong><span>友だち追加率</span><span>次回予約率</span><span>来店間隔</span><span>店販購入率</span></div>
     </div>
@@ -211,12 +216,12 @@
       <h3>オンライン講師：ウェビナーから個別相談・お申し込みまで</h3>
       <p>集客ページ・リマインド配信・個別相談予約・決済までをUTAGEとLINEでつなぎ、手作業なしで回る形にした設計です。</p>
       <div class="flow">
-        <div class="step"><b>SNS・広告</b><small>無料ウェビナーを告知</small></div>
-        <div class="step"><b>登録ページ</b><small>悩みに寄り添う訴求</small></div>
-        <div class="step"><b>LINEリマインド</b><small>前日・直前に自動送信</small></div>
-        <div class="step"><b>ウェビナー視聴</b><small>録画で後日視聴も可</small></div>
-        <div class="step"><b>個別相談予約</b><small>カレンダーと連携</small></div>
-        <div class="step"><b>お申し込み・決済</b><small>オンラインで完結</small></div>
+        <div class="step"><b>SNS・広告</b><small>無料ウェビナーを<br>告知</small></div>
+        <div class="step"><b>登録ページ</b><small>悩みに寄り添う<br>訴求</small></div>
+        <div class="step"><b>LINE<br>リマインド</b><small>前日・直前に<br>自動送信</small></div>
+        <div class="step"><b>ウェビナー<br>視聴</b><small>録画で<br>後日視聴も可</small></div>
+        <div class="step"><b>個別相談<br>予約</b><small>カレンダーと<br>連携</small></div>
+        <div class="step"><b>お申し込み<br>・決済</b><small>オンラインで<br>完結</small></div>
       </div>
       <div class="kpi"><strong>見る数字：</strong><span>登録率</span><span>参加率</span><span>相談申込率</span><span>成約率</span></div>
     </div>
@@ -226,18 +231,11 @@
       <h3>LP・バナーのデザイン見本</h3>
       <p>導線の入口となるページやバナーも、ブランドの雰囲気に合わせて制作します。</p>
       <div class="mocks">
-        <div class="phone">
-          <div class="fv">
-            <small>EYELASH SALON（架空）</small>
-            <h4>まつ毛の持ちが、<br>変わるケアを。</h4>
-            <p>LINE登録で初回ケアの特典をお届け</p>
-            <span class="cta">LINEで友だち追加</span>
+        <div>
+          <div class="phone real">
+            <img src="artmake-lp.jpg" alt="アートメイクサロンのLP（UTAGEで制作）" loading="lazy">
           </div>
-          <div class="body">
-            <div>✓ ポイントカードはLINEで</div>
-            <div>✓ 24時間LINE予約</div>
-            <div>✓ ホームケアのご相談も</div>
-          </div>
+          <p class="phone-cap">アートメイクサロンのLP（UTAGEで制作）<br>枠内をスクロールすると全体が見られます</p>
         </div>
         <div class="banners">
           <div class="banner"><b>3日間の無料オンライン講座</b><small>はじめてのSNS集客｜オンライン講座（架空）</small></div>

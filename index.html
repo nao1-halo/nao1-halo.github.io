@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nao｜LINE・UTAGE導線づくり</title>
+<meta name="description" content="サロン・個人教室向けに、LINE公式アカウントとUTAGEで「自動でリピートが生まれる仕組み」をデータにもとづいて設計し、デザインまで一人で対応します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#e45d97;
+    --pink-soft:#fde6f0;
+    --purple:#7a5bd0;
+    --purple-soft:#ede7fb;
+    --ink:#2b2140;
+    --muted:#6e6683;
+    --bg:#fffafc;
+    --card:#ffffff;
+    --line:#efe4ee;
+    --grad:linear-gradient(135deg,var(--pink),var(--purple));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Noto Sans JP",sans-serif;color:var(--ink);background:var(--bg);line-height:1.8;font-size:16px}
+  h1,h2,h3{font-family:"Zen Maru Gothic","Noto Sans JP",sans-serif;line-height:1.4}
+  a{color:var(--purple)}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  section{padding:72px 0}
+  .label{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--pink);margin-bottom:8px}
+  h2{font-size:clamp(24px,4.5vw,32px);margin-bottom:16px}
+  .lead{color:var(--muted);margin-bottom:32px}
+
+  /* header */
+  header{position:sticky;top:0;z-index:10;background:rgba(255,250,252,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{font-family:"Zen Maru Gothic";font-weight:700;font-size:18px;color:var(--ink);text-decoration:none}
+  .logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  nav a{font-size:14px;margin-left:18px;text-decoration:none;color:var(--muted)}
+  @media(max-width:640px){nav a:not(.nav-cta){display:none}}
+  .nav-cta{background:var(--grad);color:#fff!important;padding:6px 14px;border-radius:999px;font-weight:700}
+
+  /* hero */
+  .hero{padding:80px 0 64px;background:radial-gradient(circle at 85% 10%,var(--purple-soft),transparent 45%),radial-gradient(circle at 10% 90%,var(--pink-soft),transparent 45%)}
+  .hero .tag{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:13px;color:var(--muted);margin-bottom:20px}
+  .hero h1{font-size:clamp(28px,6vw,46px);margin-bottom:20px}
+  .hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:var(--muted);max-width:640px;margin-bottom:32px}
+  .btn{display:inline-block;background:var(--grad);color:#fff;text-decoration:none;font-weight:700;padding:14px 28px;border-radius:999px;box-shadow:0 8px 24px rgba(122,91,208,.25)}
+  .btn.ghost{background:#fff;color:var(--purple);box-shadow:none;border:1.5px solid var(--purple);margin-left:8px}
+  @media(max-width:480px){.btn{display:block;text-align:center}.btn.ghost{margin:12px 0 0}}
+
+  /* before after */
+  .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:stretch}
+  .ba-box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+  .ba-box h3{font-size:18px;margin-bottom:12px}
+  .ba-box ul{list-style:none}
+  .ba-box li{padding:8px 0 8px 26px;position:relative;border-top:1px dashed var(--line)}
+  .ba-box li:first-child{border-top:none}
+  .before li::before{content:"×";position:absolute;left:4px;color:#b3a9c2;font-weight:700}
+  .after{border:2px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box}
+  .after li::before{content:"✓";position:absolute;left:2px;color:var(--pink);font-weight:700}
+  .arrow{display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--purple)}
+  @media(max-width:720px){.ba{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}}
+
+  /* samples */
+  .samples{background:#fff}
+  .note{font-size:13px;color:var(--muted);background:var(--purple-soft);border-radius:10px;padding:10px 14px;margin-bottom:28px}
+  .sample{border:1px solid var(--line);border-radius:24px;padding:28px;margin-bottom:28px;background:var(--bg)}
+  .sample-head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+  .chip{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--pink-soft);color:var(--pink)}
+  .chip.p{background:var(--purple-soft);color:var(--purple)}
+  .sample h3{font-size:21px;margin-bottom:8px}
+  .sample > p{color:var(--muted);margin-bottom:20px}
+  .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;counter-reset:step}
+  .step{background:#fff;border-radius:14px;padding:16px 12px;text-align:center;position:relative;border:1px solid var(--line)}
+  .step::before{counter-increment:step;content:counter(step);display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--grad);color:#fff;font-size:13px;font-weight:700;margin:0 auto 8px}
+  .step b{display:block;font-size:15px}
+  .step small{color:var(--muted);font-size:12px;line-height:1.5;display:block;margin-top:4px}
+  .kpi{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px}
+  .kpi strong{margin-right:4px}
+  .kpi span{background:#fff;border:1px solid var(--line);border-radius:8px;padding:3px 10px}
+
+  /* LP mock */
+  .mocks{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+  @media(max-width:720px){.mocks{grid-template-columns:1fr}}
+  .phone{background:#fff;border-radius:24px;border:8px solid #2b2140;overflow:hidden;max-width:300px;margin:0 auto;width:100%}
+  .phone .fv{background:linear-gradient(160deg,#fbe3ee,#e9e1fb);padding:28px 18px;text-align:center}
+  .phone .fv small{font-size:11px;color:var(--purple);font-weight:700;letter-spacing:.1em}
+  .phone .fv h4{font-family:"Zen Maru Gothic";font-size:20px;margin:8px 0;line-height:1.4}
+  .phone .fv p{font-size:12px;color:var(--muted)}
+  .phone .cta{display:block;margin:14px auto 0;background:#06c755;color:#fff;border-radius:999px;padding:10px;font-size:13px;font-weight:700;width:85%}
+  .phone .body{padding:16px 18px;font-size:12px}
+  .phone .body div{border-bottom:1px solid var(--line);padding:8px 0}
+  .banners{display:flex;flex-direction:column;gap:14px}
+  .banner{border-radius:16px;padding:20px;color:#fff;background:var(--grad)}
+  .banner b{font-family:"Zen Maru Gothic";font-size:20px;display:block;line-height:1.4}
+  .banner small{opacity:.9;font-size:12px}
+  .banner.light{background:#fff;color:var(--ink);border:2px solid var(--pink)}
+  .banner.light b{color:var(--pink)}
+
+  /* strengths */
+  .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+  .card .num{font-family:"Zen Maru Gothic";font-size:36px;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.2}
+  .card h3{font-size:18px;margin:6px 0 8px}
+  .card p{color:var(--muted);font-size:15px}
+
+  /* services */
+  .services{background:#fff}
+  .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+  .svc div{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--bg)}
+  .svc b{display:block;margin-bottom:2px}
+  .svc small{color:var(--muted)}
+  .svc .opt{border-style:dashed}
+
+  /* process */
+  .process{list-style:none;counter-reset:p}
+  .process li{counter-increment:p;display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .process li::before{content:counter(p,decimal-leading-zero);font-family:"Zen Maru Gothic";font-weight:700;font-size:22px;color:var(--pink);min-width:36px}
+  .process b{display:block}
+  .process small{color:var(--muted)}
+
+  /* contact */
+  .contact{background:var(--grad);color:#fff;text-align:center;border-radius:28px;padding:56px 24px;margin:0 20px}
+  .contact h2{color:#fff}
+  .contact p{opacity:.92;margin-bottom:28px}
+  .contact .btn{background:#fff;color:var(--purple)}
+  .links{margin-top:22px;font-size:14px}
+  .links a{color:#fff;margin:0 8px;opacity:.9}
+  footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#">nao<span>｜導線デザイン</span></a>
+    <nav>
+      <a href="#samples">制作サンプル</a>
+      <a href="#strength">強み</a>
+      <a href="#service">サービス</a>
+      <a class="nav-cta" href="#contact">相談する</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="tag">サロン・個人教室・オンライン講師の方へ</span>
+    <h1>紙のポイントカードと手作業の予約を、<br><em>LINEで自動でリピートが生まれる仕組み</em>に。</h1>
+    <p>LINE公式アカウントとUTAGEで、集客から予約・リピート・販売までの「導線」を設計・構築します。売上データの分析にもとづく設計から、LP・バナーのデザインまで一人で対応するので、窓口がひとつで済みます。</p>
+    <a class="btn" href="#contact">無料で相談する</a>
+    <a class="btn ghost" href="#samples">制作サンプルを見る</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="label">BEFORE → AFTER</span>
+    <h2>お店の毎日が、こう変わります</h2>
+    <p class="lead">「忙しくて発信できない」「一度来たお客様が戻ってこない」を、仕組みで解決します。</p>
+    <div class="ba">
+      <div class="ba-box before">
+        <h3>いま</h3>
+        <ul>
+          <li>紙のポイントカードは忘れられ、なくされる</li>
+          <li>予約は電話やDMで、施術の合間に対応</li>
+          <li>次回来店のお声がけは、お客様まかせ</li>
+          <li>店販商品のおすすめは、その場の会話だけ</li>
+        </ul>
+      </div>
+      <div class="arrow">→</div>
+      <div class="ba-box after">
+        <h3>導線を整えたあと</h3>
+        <ul>
+          <li>ポイントはLINEで自動管理、紛失ゼロ</li>
+          <li>予約はLINEから24時間受付</li>
+          <li>来店周期に合わせて自動でご案内が届く</li>
+          <li>ホームケア商品をタイミングよく自然に紹介</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="samples" id="samples">
+  <div class="wrap">
+    <span class="label">SAMPLES</span>
+    <h2>制作サンプル</h2>
+    <p class="note">※ 以下は架空の店舗・講座を想定して作成した制作サンプルです。実在の店舗・お客様の事例ではありません。</p>
+
+    <div class="sample">
+      <div class="sample-head"><span class="chip">LINE公式アカウント</span><span class="chip p">リピート導線</span></div>
+      <h3>まつ毛サロン：LINEでリピートと店販が回る仕組み</h3>
+      <p>来店時にLINEへ誘導し、ポイントカード・次回予約・ホームケア商品の案内までを一本の流れにまとめた設計です。</p>
+      <div class="flow">
+        <div class="step"><b>来店・施術</b><small>受付でQRを案内</small></div>
+        <div class="step"><b>LINE友だち追加</b><small>特典つきで登録を後押し</small></div>
+        <div class="step"><b>デジタルポイント</b><small>来店ごとに自動付与</small></div>
+        <div class="step"><b>自動リマインド</b><small>来店から3〜4週で次回案内</small></div>
+        <div class="step"><b>LINEで次回予約</b><small>24時間受付</small></div>
+        <div class="step"><b>美容液のご案内</b><small>持ちが気になる時期に紹介</small></div>
+      </div>
+      <div class="kpi"><strong>見る数字：</strong><span>友だち追加率</span><span>次回予約率</span><span>来店間隔</span><span>店販購入率</span></div>
+    </div>
+
+    <div class="sample">
+      <div class="sample-head"><span class="chip p">UTAGE</span><span class="chip">ウェビナー導線</span></div>
+      <h3>オンライン講師：ウェビナーから個別相談・お申し込みまで</h3>
+      <p>集客ページ・リマインド配信・個別相談予約・決済までをUTAGEとLINEでつなぎ、手作業なしで回る形にした設計です。</p>
+      <div class="flow">
+        <div class="step"><b>SNS・広告</b><small>無料ウェビナーを告知</small></div>
+        <div class="step"><b>登録ページ</b><small>悩みに寄り添う訴求</small></div>
+        <div class="step"><b>LINEリマインド</b><small>前日・直前に自動送信</small></div>
+        <div class="step"><b>ウェビナー視聴</b><small>録画で後日視聴も可</small></div>
+        <div class="step"><b>個別相談予約</b><small>カレンダーと連携</small></div>
+        <div class="step"><b>お申し込み・決済</b><small>オンラインで完結</small></div>
+      </div>
+      <div class="kpi"><strong>見る数字：</strong><span>登録率</span><span>参加率</span><span>相談申込率</span><span>成約率</span></div>
+    </div>
+
+    <div class="sample">
+      <div class="sample-head"><span class="chip">デザイン</span><span class="chip p">LP・バナー</span></div>
+      <h3>LP・バナーのデザイン見本</h3>
+      <p>導線の入口となるページやバナーも、ブランドの雰囲気に合わせて制作します。</p>
+      <div class="mocks">
+        <div class="phone">
+          <div class="fv">
+            <small>EYELASH SALON（架空）</small>
+            <h4>まつ毛の持ちが、<br>変わるケアを。</h4>
+            <p>LINE登録で初回ケアの特典をお届け</p>
+            <span class="cta">LINEで友だち追加</span>
+          </div>
+          <div class="body">
+            <div>✓ ポイントカードはLINEで</div>
+            <div>✓ 24時間LINE予約</div>
+            <div>✓ ホームケアのご相談も</div>
+          </div>
+        </div>
+        <div class="banners">
+          <div class="banner"><b>3日間の無料オンライン講座</b><small>はじめてのSNS集客｜オンライン講座（架空）</small></div>
+          <div class="banner light"><b>LINE友だち限定<br>次回予約でポイント2倍</b><small>サロン店頭POP（架空）</small></div>
+          <div class="banner"><b>個別相談 受付中</b><small>ウェビナー参加者限定のご案内（架空）</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="strength">
+  <div class="wrap">
+    <span class="label">STRENGTH</span>
+    <h2>選ばれる理由</h2>
+    <p class="lead">「なんとなく作る」のではなく、数字を見て、届く形にして、仕上げまで。</p>
+    <div class="grid3">
+      <div class="card">
+        <div class="num">+20%</div>
+        <h3>データにもとづく導線設計</h3>
+        <p>大手商社で市場・売上データを分析し、担当部門の売上を20%伸ばした経験を、導線の設計と改善に活かします。</p>
+      </div>
+      <div class="card">
+        <div class="num">1人</div>
+        <h3>設計からデザインまで一括</h3>
+        <p>導線設計・LINE・UTAGEの構築に加え、LPやバナーのデザインも対応。複数の業者に頼む手間がかかりません。</p>
+      </div>
+      <div class="card">
+        <div class="num">♡</div>
+        <h3>お客様目線のおもてなし</h3>
+        <p>接客の現場で培った「相手が迷わない・心地よい」感覚で、お客様が自然に進める流れをつくります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="service">
+  <div class="wrap">
+    <span class="label">SERVICE</span>
+    <h2>対応できること</h2>
+    <p class="lead">必要なところだけのご依頼も歓迎です。料金はココナラの出品ページでご確認いただけます。</p>
+    <div class="svc">
+      <div><b>LINE公式アカウント構築</b><small>ポイントカード・予約・自動配信</small></div>
+      <div><b>UTAGE初期設定サポート</b><small>はじめての方も安心</small></div>
+      <div><b>ステップ配信シナリオ設計</b><small>読まれる順番と内容を設計</small></div>
+      <div><b>ファネル（導線）設計・コンサル</b><small>数字を見ながら改善提案</small></div>
+      <div><b>ウェビナー設定</b><small>登録〜リマインド〜相談予約</small></div>
+      <div><b>決済システム連携</b><small>オンラインで申込完結</small></div>
+      <div class="opt"><b>オプション：LP制作</b><small>導線の入口ページ</small></div>
+      <div class="opt"><b>オプション：バナー制作</b><small>SNS・広告・店頭POP</small></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="label">FLOW</span>
+    <h2>ご依頼の流れ</h2>
+    <ol class="process">
+      <li><div><b>無料ヒアリング（30〜60分）</b><small>現状やお悩み、目指したい形をうかがいます</small></div></li>
+      <li><div><b>お見積り</b><small>必要な内容だけに絞ってご提案します</small></div></li>
+      <li><div><b>ご契約</b><small>内容にご納得いただいてからスタート</small></div></li>
+      <li><div><b>構築・制作</b><small>途中経過も共有しながら進めます</small></div></li>
+      <li><div><b>納品・フォロー</b><small>使い方のご説明と、納品後のご相談にも対応</small></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <h2>まずは無料でご相談ください</h2>
+    <p>「何から手をつければいいか分からない」段階でも大丈夫です。<br>お店の状況をうかがって、いちばん効果の出やすい一歩をご提案します。</p>
+    <a class="btn" href="https://coconala.com/users/5963271" target="_blank" rel="noopener">ココナラで相談する</a>
+    <div class="links">
+      <a href="https://crowdworks.jp/public/employees/7141712" target="_blank" rel="noopener">クラウドワークス</a>
+      <a href="https://www.lancers.jp/profile/naoworks70" target="_blank" rel="noopener">ランサーズ</a>
+    </div>
+  </div>
+</section>
+
+<footer>© nao｜UTAGEウェビナー構築×データ分析</footer>
+
+</body>
+</html>
